@@ -1,0 +1,53 @@
+Revision history for Term-Detect-Software
+
+0.09    2013-09-28 (SHARYANTO)
+
+        [INCOMPATIBLE CHANGES]
+
+        - Rename dist from Term-Detect to Term-Detect-Software and document its
+          raison d'être (to respond to a CPAN Ratings review by DOLMEN).
+
+
+0.08    2013-09-25 (SHARYANTO)
+
+        - Add detect_terminal_cached().
+
+
+0.07    2013-09-10 (SHARYANTO)
+
+        - Skip parent process heuristics on Windows because it currently uses
+          get_parent_processes() (which uses 'pstree'). BTW, I'm in the process
+          of trying to make Text::ANSITable work on Windows.
+
+
+0.06    2013-06-26 (SHARYANTO)
+
+        - No functional changes. Second attempt: 'use experimental "smartmatch"'
+          must be given after 'use warnings'.
+
+
+0.05    2013-06-26 (SHARYANTO)
+
+        - No functional changes. Add 'use experimental "smartmatch"' for 5.18+.
+
+
+0.04    2013-05-09 (SHARYANTO)
+
+        - Split pstree parsing to its own module (SHARYANTO::Proc::Util), avoid
+          using pstree -s option because it's not supported in older version.
+
+
+0.03    2013-05-03 (SHARYANTO)
+
+        - No functional changes. Avoid perl undef warning.
+
+
+0.02    2013-05-03 (SHARYANTO)
+
+        - Return terminal emulator information (software, color depth, unicode,
+          etc).
+
+
+0.01    2013-03-21 (SHARYANTO)
+
+        - First release.
