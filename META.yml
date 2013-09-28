@@ -23,4 +23,4 @@ requires:
 resources:
   homepage: http://metacpan.org/release/Term-Detect-Software
   repository: http://github.com/sharyanto/perl-Term-Detect-Software
-version: 0.09
+version: 0.10

@@ -3,7 +3,7 @@ NAME
     capabilities
 
 VERSION
-    version 0.09
+    version 0.10
 
 SYNOPSIS
      use Term::Detect::Software qw(detect_terminal detect_terminal_cached);
@@ -41,7 +41,7 @@ FUNCTIONS
     *   emulator_engine => STR
 
         Possible values: konsole, xterm, gnome-terminal, rxvt, pterm
-        (PuTTY), xvt, windows (CMD.EXE).
+        (PuTTY), xvt, windows (CMD.EXE), cygwin.
 
     *   emulator_software => STR
 

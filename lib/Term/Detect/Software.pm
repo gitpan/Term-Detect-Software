@@ -6,7 +6,7 @@ use warnings;
 use experimental 'smartmatch';
 #use Log::Any '$log';
 
-our $VERSION = '0.09'; # VERSION
+our $VERSION = '0.10'; # VERSION
 
 require Exporter;
 our @ISA       = qw(Exporter);
@@ -41,6 +41,16 @@ sub detect_terminal {
             $info->{color_depth}     = 256;
             $info->{default_bgcolor} = 'ffffff';
             $info->{unicode}         = 0;
+            $info->{box_chars}       = 1;
+            last DETECT;
+        }
+
+        # cygwin terminal
+        if ($ENV{TERM} eq 'xterm' && ($ENV{OSTYPE} // '') eq 'cygwin') {
+            $info->{emulator_engine} = 'cygwin';
+            $info->{color_depth}     = 16;
+            $info->{default_bgcolor} = '000000';
+            $info->{unicode}         = 0; # CONFIRM?
             $info->{box_chars}       = 1;
             last DETECT;
         }
@@ -84,7 +94,7 @@ sub detect_terminal {
             $info->{color_depth}       = 16;
             $info->{unicode}           = 0;
             $info->{default_bgcolor}   = '000000';
-            $info->{box_chars}         = 1;
+            $info->{box_chars}         = 0;
             last DETECT;
         }
 
@@ -156,7 +166,7 @@ Term::Detect::Software - Detect terminal (emulator) software and its capabilitie
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 SYNOPSIS
 
@@ -198,7 +208,7 @@ Result:
 =item * emulator_engine => STR
 
 Possible values: konsole, xterm, gnome-terminal, rxvt, pterm (PuTTY), xvt,
-windows (CMD.EXE).
+windows (CMD.EXE), cygwin.
 
 =item * emulator_software => STR
 
