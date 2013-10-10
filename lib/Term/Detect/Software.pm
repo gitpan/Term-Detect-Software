@@ -6,7 +6,7 @@ use warnings;
 use experimental 'smartmatch';
 #use Log::Any '$log';
 
-our $VERSION = '0.10'; # VERSION
+our $VERSION = '0.11'; # VERSION
 
 require Exporter;
 our @ISA       = qw(Exporter);
@@ -88,11 +88,22 @@ sub detect_terminal {
         }
 
         # Windows command prompt
-        if ($ENV{TERM} eq 'dumb') {
+        if ($ENV{TERM} eq 'dumb' && $ENV{windir}) {
             $info->{emulator_software} = 'windows';
             $info->{emulator_engine}   = 'windows';
             $info->{color_depth}       = 16;
             $info->{unicode}           = 0;
+            $info->{default_bgcolor}   = '000000';
+            $info->{box_chars}         = 0;
+            last DETECT;
+        }
+
+        # run under CGI or something like that
+        if ($ENV{TERM} eq 'dumb') {
+            $info->{emulator_software} = 'dumb';
+            $info->{emulator_engine}   = 'dumb';
+            $info->{color_depth}       = 0;
+            # XXX how to determine unicode support?
             $info->{default_bgcolor}   = '000000';
             $info->{box_chars}         = 0;
             last DETECT;
@@ -166,7 +177,7 @@ Term::Detect::Software - Detect terminal (emulator) software and its capabilitie
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 
