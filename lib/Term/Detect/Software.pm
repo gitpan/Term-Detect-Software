@@ -6,7 +6,7 @@ use warnings;
 use experimental 'smartmatch';
 #use Log::Any '$log';
 
-our $VERSION = '0.11'; # VERSION
+our $VERSION = '0.12'; # VERSION
 
 require Exporter;
 our @ISA       = qw(Exporter);
@@ -72,7 +72,11 @@ sub detect_terminal {
         my $set_gnome_terminal_term = sub {
             $info->{emulator_software} = $_[0];
             $info->{emulator_engine}   = 'gnome-terminal';
-            $info->{color_depth}       = 256;
+
+            # xfce4-terminal only shows 16 color, despite being
+            # gnome-terminal-based?
+            $info->{color_depth}       = $_[0] =~ /xfce4/ ? 16 : 256;
+
             $info->{unicode}           = 1;
             if ($_[0] ~~ [qw/mlterm/]) {
                 $info->{default_bgcolor} = 'ffffff';
@@ -148,6 +152,11 @@ sub detect_terminal {
             unless (exists $info->{color_depth}) {
                 if ($ENV{TERM} =~ /256color/) {
                     $info->{color_depth} = 256;
+                } else {
+                    require File::Which;
+                    if (File::Which::which("tput")) {
+                        $info->{color_depth} = `tput colors` + 0;
+                    }
                 }
             }
 
@@ -171,13 +180,15 @@ __END__
 
 =pod
 
+=encoding utf-8
+
 =head1 NAME
 
 Term::Detect::Software - Detect terminal (emulator) software and its capabilities
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 
@@ -252,6 +263,9 @@ Whether terminal supports box-drawing characters.
 Just like C<detect_terminal()> but will cache the result. Can be used by
 applications or modules to avoid repeating detection process.
 
+
+None are exported by default, but they are exportable.
+
 =head1 FAQ
 
 =head2 What is this module for? Why not Term::Terminfo or Term::Encoding?
@@ -284,6 +298,23 @@ By peeking into its configuration.
 L<Term::Terminfo>
 
 L<Term::Encoding>
+
+=head1 HOMEPAGE
+
+Please visit the project's homepage at L<https://metacpan.org/release/Term-Detect-Software>.
+
+=head1 SOURCE
+
+Source repository is at L<https://github.com/sharyanto/perl-Term-Detect-Software>.
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+L<https://rt.cpan.org/Public/Dist/Display.html?Name=Term-Detect-Software>
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
 
 =head1 AUTHOR
 

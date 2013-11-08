@@ -3,7 +3,7 @@ NAME
     capabilities
 
 VERSION
-    version 0.11
+    version 0.12
 
 SYNOPSIS
      use Term::Detect::Software qw(detect_terminal detect_terminal_cached);
@@ -72,6 +72,8 @@ FUNCTIONS
     Just like "detect_terminal()" but will cache the result. Can be used by
     applications or modules to avoid repeating detection process.
 
+    None are exported by default, but they are exportable.
+
 FAQ
   What is this module for? Why not Term::Terminfo or Term::Encoding?
     This module is first written for Text::ANSITable so that the module can
@@ -97,6 +99,21 @@ SEE ALSO
     Term::Terminfo
 
     Term::Encoding
+
+HOMEPAGE
+    Please visit the project's homepage at
+    <https://metacpan.org/release/Term-Detect-Software>.
+
+SOURCE
+    Source repository is at
+    <https://github.com/sharyanto/perl-Term-Detect-Software>.
+
+BUGS
+    Please report any bugs or feature requests on the bugtracker website
+    <https://rt.cpan.org/Public/Dist/Display.html?Name=Term-Detect-Software>
+
+    When submitting a bug or request, please include a test-file or a patch
+    to an existing test-file that illustrates the bug or desired feature.
 
 AUTHOR
     Steven Haryanto <stevenharyanto@gmail.com>

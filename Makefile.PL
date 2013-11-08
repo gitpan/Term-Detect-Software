@@ -20,15 +20,17 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Term::Detect::Software",
   "PREREQ_PM" => {
+    "File::Which" => 0,
     "SHARYANTO::Proc::Util" => "0.44",
     "experimental" => 0
   },
   "TEST_REQUIRES" => {
+    "File::Spec" => 0,
     "IO::Handle" => 0,
     "IPC::Open3" => 0,
     "Test::More" => 0
   },
-  "VERSION" => "0.11",
+  "VERSION" => "0.12",
   "test" => {
     "TESTS" => "t/*.t"
   }

@@ -3,6 +3,7 @@ abstract: 'Detect terminal (emulator) software and its capabilities'
 author:
   - 'Steven Haryanto <stevenharyanto@gmail.com>'
 build_requires:
+  File::Spec: 0
   IO::Handle: 0
   IPC::Open3: 0
   Test::More: 0
@@ -16,10 +17,12 @@ meta-spec:
   version: 1.4
 name: Term-Detect-Software
 requires:
+  File::Which: 0
   SHARYANTO::Proc::Util: 0.44
   experimental: 0
   perl: 5.010001
 resources:
-  homepage: http://metacpan.org/release/Term-Detect-Software
-  repository: http://github.com/sharyanto/perl-Term-Detect-Software
-version: 0.11
+  bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=Term-Detect-Software
+  homepage: https://metacpan.org/release/Term-Detect-Software
+  repository: git://github.com/sharyanto/perl-Term-Detect-Software.git
+version: 0.12
