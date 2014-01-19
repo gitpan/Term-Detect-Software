@@ -3,7 +3,7 @@ NAME
     capabilities
 
 VERSION
-    version 0.12
+    version 0.13
 
 SYNOPSIS
      use Term::Detect::Software qw(detect_terminal detect_terminal_cached);
@@ -23,8 +23,7 @@ FUNCTIONS
 
     Detection method is tried from the easiest/cheapest (e.g. checking
     environment variables) or by looking at known process names in the
-    process tree (using the pstree command). Terminal capabilities is
-    determined using heuristics.
+    process tree. Terminal capabilities is determined using heuristics.
 
     Currently Konsole and Konsole-based terminals (like Yakuake) can be
     detected through existence of environment variables
@@ -72,8 +71,6 @@ FUNCTIONS
     Just like "detect_terminal()" but will cache the result. Can be used by
     applications or modules to avoid repeating detection process.
 
-    None are exported by default, but they are exportable.
-
 FAQ
   What is this module for? Why not Term::Terminfo or Term::Encoding?
     This module is first written for Text::ANSITable so that the module can
@@ -119,7 +116,7 @@ AUTHOR
     Steven Haryanto <stevenharyanto@gmail.com>
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2013 by Steven Haryanto.
+    This software is copyright (c) 2014 by Steven Haryanto.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.

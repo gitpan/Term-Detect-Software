@@ -6,7 +6,7 @@ use warnings;
 use experimental 'smartmatch';
 #use Log::Any '$log';
 
-our $VERSION = '0.12'; # VERSION
+our $VERSION = '0.13'; # VERSION
 
 require Exporter;
 our @ISA       = qw(Exporter);
@@ -180,7 +180,7 @@ __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -188,7 +188,7 @@ Term::Detect::Software - Detect terminal (emulator) software and its capabilitie
 
 =head1 VERSION
 
-version 0.12
+version 0.13
 
 =head1 SYNOPSIS
 
@@ -211,8 +211,8 @@ software and its capabilities/settings. Return empty hashref if not detected
 running under termina (i.e. C<$ENV{TERM}> is undef).
 
 Detection method is tried from the easiest/cheapest (e.g. checking environment
-variables) or by looking at known process names in the process tree (using the
-B<pstree> command). Terminal capabilities is determined using heuristics.
+variables) or by looking at known process names in the process tree. Terminal
+capabilities is determined using heuristics.
 
 Currently Konsole and Konsole-based terminals (like Yakuake) can be detected
 through existence of environment variables C<KONSOLE_DBUS_SERVICE> or
@@ -263,9 +263,6 @@ Whether terminal supports box-drawing characters.
 Just like C<detect_terminal()> but will cache the result. Can be used by
 applications or modules to avoid repeating detection process.
 
-
-None are exported by default, but they are exportable.
-
 =head1 FAQ
 
 =head2 What is this module for? Why not Term::Terminfo or Term::Encoding?
@@ -309,8 +306,7 @@ Source repository is at L<https://github.com/sharyanto/perl-Term-Detect-Software
 
 =head1 BUGS
 
-Please report any bugs or feature requests on the bugtracker website
-L<https://rt.cpan.org/Public/Dist/Display.html?Name=Term-Detect-Software>
+Please report any bugs or feature requests on the bugtracker website L<https://rt.cpan.org/Public/Dist/Display.html?Name=Term-Detect-Software>
 
 When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired
@@ -322,7 +318,7 @@ Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Steven Haryanto.
+This software is copyright (c) 2014 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
