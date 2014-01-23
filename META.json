@@ -56,7 +56,7 @@
          "web" : "https://github.com/sharyanto/perl-Term-Detect-Software"
       }
    },
-   "version" : "0.13",
+   "version" : "0.14",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.018002"

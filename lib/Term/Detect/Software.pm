@@ -6,7 +6,7 @@ use warnings;
 use experimental 'smartmatch';
 #use Log::Any '$log';
 
-our $VERSION = '0.13'; # VERSION
+our $VERSION = '0.14'; # VERSION
 
 require Exporter;
 our @ISA       = qw(Exporter);
@@ -170,6 +170,14 @@ sub detect_terminal {
 
     } # DETECT
 
+    # some additional detections
+
+    # we're running under emacs, it doesn't support box chars
+    if ($ENV{INSIDE_EMACS}) {
+        $info->{inside_emacs} = 1;
+        $info->{box_chars} = 0;
+    }
+
     $info;
 }
 
@@ -188,7 +196,7 @@ Term::Detect::Software - Detect terminal (emulator) software and its capabilitie
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =head1 SYNOPSIS
 
