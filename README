@@ -3,7 +3,7 @@ NAME
     capabilities
 
 VERSION
-    version 0.14
+    version 0.15
 
 SYNOPSIS
      use Term::Detect::Software qw(detect_terminal detect_terminal_cached);
