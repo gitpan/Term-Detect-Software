@@ -3,7 +3,8 @@ NAME
     capabilities
 
 VERSION
-    version 0.15
+    This document describes version 0.16 of Term::Detect::Software (from
+    Perl distribution Term-Detect-Software), released on 2014-06-09.
 
 SYNOPSIS
      use Term::Detect::Software qw(detect_terminal detect_terminal_cached);

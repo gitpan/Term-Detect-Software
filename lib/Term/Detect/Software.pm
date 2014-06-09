@@ -6,7 +6,7 @@ use warnings;
 use experimental 'smartmatch';
 #use Log::Any '$log';
 
-our $VERSION = '0.15'; # VERSION
+our $VERSION = '0.16'; # VERSION
 
 require Exporter;
 our @ISA       = qw(Exporter);
@@ -131,6 +131,7 @@ sub detect_terminal {
             my $ppids = SHARYANTO::Proc::Util::get_parent_processes();
             unless (defined $ppids) {
                 push @dbg, "skip: get_parent_processes returns undef";
+                last;
             }
 
             # [0] is shell
@@ -220,7 +221,7 @@ Term::Detect::Software - Detect terminal (emulator) software and its capabilitie
 
 =head1 VERSION
 
-version 0.15
+This document describes version 0.16 of Term::Detect::Software (from Perl distribution Term-Detect-Software), released on 2014-06-09.
 
 =head1 SYNOPSIS
 
