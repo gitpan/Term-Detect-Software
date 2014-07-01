@@ -6,7 +6,7 @@ use warnings;
 use experimental 'smartmatch';
 #use Log::Any '$log';
 
-our $VERSION = '0.16'; # VERSION
+our $VERSION = '0.17'; # VERSION
 
 require Exporter;
 our @ISA       = qw(Exporter);
@@ -221,7 +221,7 @@ Term::Detect::Software - Detect terminal (emulator) software and its capabilitie
 
 =head1 VERSION
 
-This document describes version 0.16 of Term::Detect::Software (from Perl distribution Term-Detect-Software), released on 2014-06-09.
+This document describes version 0.17 of Term::Detect::Software (from Perl distribution Term-Detect-Software), released on 2014-07-01.
 
 =head1 SYNOPSIS
 
