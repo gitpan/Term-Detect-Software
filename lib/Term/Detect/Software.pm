@@ -6,7 +6,7 @@ use warnings;
 use experimental 'smartmatch';
 #use Log::Any '$log';
 
-our $VERSION = '0.17'; # VERSION
+our $VERSION = '0.18'; # VERSION
 
 require Exporter;
 our @ISA       = qw(Exporter);
@@ -28,6 +28,8 @@ sub detect_terminal {
     {
         unless (defined $ENV{TERM}) {
             push @dbg, "skip: TERM env undefined";
+            $info->{emulator_engine}   = '';
+            $info->{emulator_software} = '';
             last DETECT;
         }
 
@@ -221,12 +223,19 @@ Term::Detect::Software - Detect terminal (emulator) software and its capabilitie
 
 =head1 VERSION
 
-This document describes version 0.17 of Term::Detect::Software (from Perl distribution Term-Detect-Software), released on 2014-07-01.
+This document describes version 0.18 of Term::Detect::Software (from Perl distribution Term-Detect-Software), released on 2014-11-22.
 
 =head1 SYNOPSIS
 
  use Term::Detect::Software qw(detect_terminal detect_terminal_cached);
  my $res = detect_terminal();
+ die "Not running under terminal!" unless $res->{emulator_engine};
+ say "Emulator engine: ", $res->{emulator_engine};
+ say "Emulator software: ", $res->{emulator_software};
+ say "Unicode support? ", $res->{unicode} ? "yes":"no";
+ say "Boxchars support? ", $res->{box_chars} ? "yes":"no";
+ say "Color depth: ", $res->{color_depth};
+ say "Inside emacs? ", $res->{inside_emacs} ? "yes":"no";
 
 =head1 DESCRIPTION
 
@@ -240,8 +249,7 @@ L<Term::Encoding>.
 =head2 detect_terminal() => HASHREF
 
 Return a hashref containing information about running terminal (emulator)
-software and its capabilities/settings. Return empty hashref if not detected
-running under termina (i.e. C<$ENV{TERM}> is undef).
+software and its capabilities/settings.
 
 Detection method is tried from the easiest/cheapest (e.g. checking environment
 variables) or by looking at known process names in the process tree. Terminal
@@ -262,13 +270,15 @@ Result:
 
 =item * emulator_engine => STR
 
-Possible values: konsole, xterm, gnome-terminal, rxvt, pterm (PuTTY), xvt,
-windows (CMD.EXE), cygwin.
+Possible values: C<konsole>, C<xterm>, C<gnome-terminal>, C<rxvt>, C<pterm>
+(PuTTY), C<xvt>, C<windows> (CMD.EXE), C<cygwin>, or empty string (if not
+detected running under terminal).
 
 =item * emulator_software => STR
 
-Either: xfce4-terminal, guake, gnome-terminal, mlterm, lxterminal, rxvt, mrxvt,
-putty, xvt, windows (CMD.EXE).
+Either: C<xfce4-terminal>, C<guake>, C<gnome-terminal>, C<mlterm>,
+C<lxterminal>, C<rxvt>, C<mrxvt>, C<putty>, C<xvt>, C<windows> (CMD.EXE), or
+empty string (if not detected running under terminal).
 
 w=item * color_depth => INT
 
@@ -347,11 +357,11 @@ feature.
 
 =head1 AUTHOR
 
-Steven Haryanto <stevenharyanto@gmail.com>
+perlancar <perlancar@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Steven Haryanto.
+This software is copyright (c) 2014 by perlancar@cpan.org.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
