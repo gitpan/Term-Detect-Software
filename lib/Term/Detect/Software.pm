@@ -1,12 +1,13 @@
 package Term::Detect::Software;
 
+our $DATE = '2014-12-05'; # DATE
+our $VERSION = '0.19'; # VERSION
+
 use 5.010001;
 use strict;
 use warnings;
 use experimental 'smartmatch';
 #use Log::Any '$log';
-
-our $VERSION = '0.18'; # VERSION
 
 require Exporter;
 our @ISA       = qw(Exporter);
@@ -129,8 +130,8 @@ sub detect_terminal {
         {
             last if $^O =~ /Win/;
 
-            require SHARYANTO::Proc::Util;
-            my $ppids = SHARYANTO::Proc::Util::get_parent_processes();
+            require Proc::Find::Parents;
+            my $ppids = Proc::Find::Parents::get_parent_processes();
             unless (defined $ppids) {
                 push @dbg, "skip: get_parent_processes returns undef";
                 last;
@@ -223,7 +224,7 @@ Term::Detect::Software - Detect terminal (emulator) software and its capabilitie
 
 =head1 VERSION
 
-This document describes version 0.18 of Term::Detect::Software (from Perl distribution Term-Detect-Software), released on 2014-11-22.
+This document describes version 0.19 of Term::Detect::Software (from Perl distribution Term-Detect-Software), released on 2014-12-05.
 
 =head1 SYNOPSIS
 
@@ -345,7 +346,7 @@ Please visit the project's homepage at L<https://metacpan.org/release/Term-Detec
 
 =head1 SOURCE
 
-Source repository is at L<https://github.com/sharyanto/perl-Term-Detect-Software>.
+Source repository is at L<https://github.com/perlancar/perl-Term-Detect-Software>.
 
 =head1 BUGS
 
