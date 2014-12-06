@@ -30,7 +30,7 @@ my %WriteMakefileArgs = (
     "IPC::Open3" => 0,
     "Test::More" => 0
   },
-  "VERSION" => "0.19",
+  "VERSION" => "0.20",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -57,7 +57,7 @@ unless ( eval { ExtUtils::MakeMaker->VERSION(6.63_03) } ) {
 delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
   unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
 
-if ( $^O =~ /(linux|bsd)/i ) {
+if ( $^O =~ /(linux|bsd|darwin)/i ) {
 	$WriteMakefileArgs{PREREQ_PM}{'Proc::Find::Parents'} = '0.60';
 }
 

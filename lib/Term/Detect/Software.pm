@@ -1,7 +1,7 @@
 package Term::Detect::Software;
 
-our $DATE = '2014-12-05'; # DATE
-our $VERSION = '0.19'; # VERSION
+our $DATE = '2014-12-06'; # DATE
+our $VERSION = '0.20'; # VERSION
 
 use 5.010001;
 use strict;
@@ -224,7 +224,7 @@ Term::Detect::Software - Detect terminal (emulator) software and its capabilitie
 
 =head1 VERSION
 
-This document describes version 0.19 of Term::Detect::Software (from Perl distribution Term-Detect-Software), released on 2014-12-05.
+This document describes version 0.20 of Term::Detect::Software (from Perl distribution Term-Detect-Software), released on 2014-12-06.
 
 =head1 SYNOPSIS
 
@@ -346,7 +346,7 @@ Please visit the project's homepage at L<https://metacpan.org/release/Term-Detec
 
 =head1 SOURCE
 
-Source repository is at L<https://github.com/perlancar/perl-Term-Detect-Software>.
+Source repository is at L<https://github.com/sharyanto/perl-Term-Detect-Software>.
 
 =head1 BUGS
 
