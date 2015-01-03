@@ -1,7 +1,7 @@
 package Term::Detect::Software;
 
-our $DATE = '2014-12-06'; # DATE
-our $VERSION = '0.20'; # VERSION
+our $DATE = '2015-01-03'; # DATE
+our $VERSION = '0.21'; # VERSION
 
 use 5.010001;
 use strict;
@@ -210,7 +210,7 @@ sub detect_terminal {
 }
 
 1;
-#ABSTRACT: Detect terminal (emulator) software and its capabilities
+# ABSTRACT: Detect terminal (emulator) software and its capabilities
 
 __END__
 
@@ -224,7 +224,7 @@ Term::Detect::Software - Detect terminal (emulator) software and its capabilitie
 
 =head1 VERSION
 
-This document describes version 0.20 of Term::Detect::Software (from Perl distribution Term-Detect-Software), released on 2014-12-06.
+This document describes version 0.21 of Term::Detect::Software (from Perl distribution Term-Detect-Software), released on 2015-01-03.
 
 =head1 SYNOPSIS
 
@@ -324,16 +324,6 @@ we shouldn't display Unicode characters. Another example is color depth:
 Term::Terminfo currently doesn't recognize Konsole's 24bit color support and
 only gives C<max_colors> 256.
 
-=head1 TODO
-
-=over
-
-=item * Better detection of terminal emulator's background color
-
-By peeking into its configuration.
-
-=back
-
 =head1 SEE ALSO
 
 L<Term::Terminfo>
@@ -362,7 +352,7 @@ perlancar <perlancar@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by perlancar@cpan.org.
+This software is copyright (c) 2015 by perlancar@cpan.org.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
